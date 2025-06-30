@@ -1,3 +1,4 @@
+// app is the main commpoent 
 const App = () => {
   const course = {
     name: 'Half Stack application development',
