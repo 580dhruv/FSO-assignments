@@ -38,34 +38,22 @@ const App = () => {
     setTotal(total+1)
     setAvg(avg-1)
   }
-  if(total!==0) {
-    return (
-      <div>
-        <Heading title='give feedback'/>
-        <Button onClick={handleGood} text='good'/>
-        <Button onClick={handleNeutral} text="neutral"></Button>
-        <Button onClick={handleBad} text="bad"></Button>
-        <Heading title='statistics'/>
-        <Statistics stat_type='good' stats={good}/>
-        <Statistics stat_type='neutral' stats={neutral}/>
-        <Statistics stat_type='bad' stats={bad}/>
-        <Statistics stat_type='all' stats={total}/>
-        <Statistics stat_type='average' stats={avg/total}/>
-        <Statistics stat_type='positive' stats={(good/total)*100+' %'}/>
-      </div>
-    )
-  } 
+  
   return (
     <div>
-        <Heading title='give feedback'/>
-        <Button onClick={handleGood} text='good'/>
-        <Button onClick={handleNeutral} text="neutral"></Button>
-        <Button onClick={handleBad} text="bad"></Button>
-        <Heading title='statistics'/>
-        No feedback given
-      </div>
+      <Heading title='give feedback'/>
+      <Button onClick={handleGood} text='good'/>
+      <Button onClick={handleNeutral} text="neutral"></Button>
+      <Button onClick={handleBad} text="bad"></Button>
+      <Heading title='statistics'/>
+      <Statistics stat_type='good' stats={good}/>
+      <Statistics stat_type='neutral' stats={neutral}/>
+      <Statistics stat_type='bad' stats={bad}/>
+      <Statistics stat_type='all' stats={total}/>
+      <Statistics stat_type='average' stats={avg/total}/>
+      <Statistics stat_type='positive' stats={(good/total)*100+' %'}/>
+    </div>
   )
-  
 }
 
 export default App
