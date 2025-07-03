@@ -35,12 +35,27 @@ const App = () => {
     copy[selected] = copy[selected]+1
     setVotes(copy)
   }
+  let maxkey=0
+  let maxvalue=0
+  function findMax() {
+    for (let key in votes) {
+      if (maxvalue<=votes[key]) {
+        maxkey = key
+        maxvalue = votes[key]
+      }
+    }
+  }
+  findMax()
   return (
     <div>
-      <Heading text={anecdotes[selected]}/>
+      <Heading text="Anecdote of the Day"/>
+      {anecdotes[selected]}<br/>
       has {votes[selected]} votes<br/>
       <Button onClick={handleVotes} text='vote'/>
       <Button onClick={handleNextAnecdote} text='next anecdote'/>
+      <Heading text="Anecdote with most votes"/>
+      {anecdotes[maxkey]}<br/>
+      has {votes[maxkey]} votes<br/>
     </div>
   )
 }
