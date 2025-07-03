@@ -12,21 +12,21 @@ const Heading = ({title}) => {
 const Statistics= (props) => {
   console.log("props.states: ",props)
   return (
-    <>
+    <table>
         <StatisticLine text='good' value={props.states.good}/>
         <StatisticLine text='neutral' value={props.states.neutral}/>
         <StatisticLine text='bad' value={props.states.bad}/>
         <StatisticLine text='all' value={props.states.total}/>
         <StatisticLine text='average' value={props.states.avg/props.states.total}/>
-        <StatisticLine text='positive' value={props.states.good/props.states.total+'%'}/>
-    </>
+        <StatisticLine text='positive' value={props.states.good/props.states.total*100+'%'}/>
+    </table>
   )
 }
 const StatisticLine=({text,value})=> {
   return (
-    <>
-    {text} {value} <br/>
-    </>
+    <tr>
+      <td>{text}</td><td> {value}</td> <br/>
+    </tr>
   )
 }
 const App = () => {
