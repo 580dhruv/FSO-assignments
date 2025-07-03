@@ -9,10 +9,23 @@ const Heading = ({title}) => {
     <h1>{title}</h1>
   )
 }
-const Statistics= ({stat_type,stats})=> {
+const Statistics= (props) => {
+  console.log("props.states: ",props)
   return (
     <>
-    {stat_type} {stats} <br/>
+        <StatisticLine text='good' value={props.states.good}/>
+        <StatisticLine text='neutral' value={props.states.neutral}/>
+        <StatisticLine text='bad' value={props.states.bad}/>
+        <StatisticLine text='all' value={props.states.total}/>
+        <StatisticLine text='average' value={props.states.avg/props.states.total}/>
+        <StatisticLine text='positive' value={props.states.good/props.states.total+'%'}/>
+    </>
+  )
+}
+const StatisticLine=({text,value})=> {
+  return (
+    <>
+    {text} {value} <br/>
     </>
   )
 }
@@ -38,6 +51,9 @@ const App = () => {
     setTotal(total+1)
     setAvg(avg-1)
   }
+  
+  const stateList = {good,neutral,bad,total,avg}
+
   if(total!==0) {
     return (
       <div>
@@ -46,12 +62,7 @@ const App = () => {
         <Button onClick={handleNeutral} text="neutral"></Button>
         <Button onClick={handleBad} text="bad"></Button>
         <Heading title='statistics'/>
-        <Statistics stat_type='good' stats={good}/>
-        <Statistics stat_type='neutral' stats={neutral}/>
-        <Statistics stat_type='bad' stats={bad}/>
-        <Statistics stat_type='all' stats={total}/>
-        <Statistics stat_type='average' stats={avg/total}/>
-        <Statistics stat_type='positive' stats={good/total+'%'}/>
+        <Statistics states={stateList}/>
       </div>
     )
   }
