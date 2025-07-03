@@ -25,15 +25,22 @@ const App = () => {
     return Math.round(Math.random()*max)
   }
   const [selected, setSelected] = useState(0)
-  const handleClick= ()=> {
+  const [votes,setVotes] =  useState({0:0,1:0,2:0,3:0,4:0,5:0,6:0,7:0 })
+  const handleNextAnecdote = ()=> {
     let randomNo = getRandomNo(anecdotes.length-1)
-    console.log(randomNo)
     setSelected(randomNo)
+  }
+  const handleVotes = () => {
+    let copy ={...votes}
+    copy[selected] = copy[selected]+1
+    setVotes(copy)
   }
   return (
     <div>
       <Heading text={anecdotes[selected]}/>
-      <Button onClick={handleClick} text='next anecdote'/>
+      has {votes[selected]} votes<br/>
+      <Button onClick={handleVotes} text='vote'/>
+      <Button onClick={handleNextAnecdote} text='next anecdote'/>
     </div>
   )
 }
