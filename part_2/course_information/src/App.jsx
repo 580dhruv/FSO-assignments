@@ -61,10 +61,11 @@ const Part=({parts})=> {
   )
 }
 const Total=({parts})=>{
-  let total=0
-  parts.forEach(element => {
-    total +=element.exercises
-  })
+  let initialValue=0
+  const total = parts.reduce(
+    (accumulatePrev, currentObj) => {
+    return accumulatePrev+currentObj.exercises
+  },0)
   return (
     <>
     <b>total of {total} exercises</b>
