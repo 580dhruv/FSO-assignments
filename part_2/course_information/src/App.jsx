@@ -18,7 +18,12 @@ const App = () => {
         name: 'State of a component',
         exercises: 14,
         id: 3
-      }
+      },
+      {
+        name: 'Redux',
+        exercises: 11,
+        id: 4
+      },
     ]
   }
   return <Course course={course} />
@@ -28,6 +33,7 @@ const Course = ({course}) => {
     <>
       <Header name={course.name}/>
       <Content parts={course.parts}/>
+      <Total parts={course.parts}/>
     </>
   )
 }
@@ -41,9 +47,9 @@ const Header = ({name}) => {
 const Content=({parts})=> {
   return (
     <div>
-        <Part parts={parts[0]}></Part>
-        <Part parts={parts[1]}></Part>
-        <Part parts={parts[2]}></Part>    
+        {
+          parts.map((part,index)=><Part key={index} parts={parts[index]}></Part>)
+        }
     </div>
   )
 }
@@ -61,7 +67,7 @@ const Total=({parts})=>{
   })
   return (
     <>
-    <p>Number of exercises : {total}</p>
+    <b>total of {total} exercises</b>
     </>
   )
 }
